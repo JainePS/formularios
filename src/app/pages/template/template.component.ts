@@ -21,7 +21,13 @@ export class TemplateComponent implements OnInit {
 
   toHold(form: NgForm){
     console.log(form);
-    console.log(form.value);
+
+    if(form.invalid){
+      Object.values(form.controls).forEach( control =>{
+        control.markAsTouched()
+      });
+    }
+    return;
         
   }
 

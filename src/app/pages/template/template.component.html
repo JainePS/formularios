@@ -1,62 +1,73 @@
 <h4>Formularios <small> template </small></h4>
-<hr>
-<form autocomplete="off"(ngSubmit)="toHold( form )" #form="ngForm" >
-
+<hr />
+<form autocomplete="off" (ngSubmit)="toHold(form)" #form="ngForm">
   <div>
-
     <div class="form-group row">
       <label class="col-2 col-form-label">Name</label>
       <div class="col-8">
-
-        <input class="form-control "
-               type="text"
-               name="Name"
-               [class.is-invalid]="nome.invalid && nome.touched"
-               [ngModel]="user.name"
-               placeholder="Name"
-               required
-               minlength="3"
-               #nome="ngModel">
-               
+        <input
+          class="form-control"
+          type="text"
+          name="Name"
+          [class.is-invalid]="nome.invalid && nome.touched"
+          [ngModel]="user.name"
+          placeholder="Name"
+          required
+          minlength="3"
+          #nome="ngModel"
+        />
+        <small
+          *ngIf="nome.invalid && nome.touched"
+          class="form-text text-danger"
+          >Insert more than 3 letters</small
+        >
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Last Name</label>
       <div class="col-8">
-
-        <input class="form-control"
-               type="text"
-               [class.is-invalid]="lastName.invalid && lastName.touched"
-               [ngModel]="user.lastName"
-               name="lastName" 
-               placeholder="Last name"
-               required
-               minlength="3"
-               #lastName="ngModel"
-            >
+        <input
+          class="form-control"
+          type="text"
+          [class.is-invalid]="lastName.invalid && lastName.touched"
+          [ngModel]="user.lastName"
+          name="lastName"
+          placeholder="Last name"
+          required
+          minlength="3"
+          #lastName="ngModel"
+        />
+        <small
+          *ngIf="lastName.invalid && lastName.touched"
+          class="form-text text-danger"
+          >Insert more than 3 letters</small
+        >
       </div>
     </div>
-
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">E-mail</label>
     <div class="col-8">
-
-      <input class="form-control"
-             type="email"
-             [class.is-invalid]="email.invalid && email.touched"
-             [ngModel]="user.email"
-             name="Email"
-             placeholder="Correo electrónico"
-             required
-             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-             #email="ngModel">
+      <input
+        class="form-control"
+        type="email"
+        [class.is-invalid]="email.invalid && email.touched"
+        [ngModel]="user.email"
+        name="Email"
+        placeholder="Correo electrónico"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        #email="ngModel"
+      />
+      <small
+        *ngIf="email.invalid && email.touched"
+        class="form-text text-danger"
+        >E-mail is required</small
+      >
     </div>
   </div>
-
-
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
@@ -66,5 +77,4 @@
       </button>
     </div>
   </div>
-
 </form>
