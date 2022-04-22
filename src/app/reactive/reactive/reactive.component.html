@@ -56,14 +56,16 @@
         class="form-control"
         type="text"
         placeholder="State"
-        formControlName="state">
+        formControlName="state"
+        [class.is-invalid]="invalidState">
     </div>
     <div class="row-form col">
       <input
         class="form-control"
         type="text"
         placeholder="city"
-        formControlName="city">
+        formControlName="city"
+        [class.is-invalid]="invalidCity">
 
      
       </div>
