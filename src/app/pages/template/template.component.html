@@ -73,24 +73,73 @@
     <label class="col-2 col-form-label">Country</label>
     <div class="col-8"></div>
   </div>
-  <select class="form-control"
-        name="country"
-        [disabled]="countries.length === 0"
-        [class.is-invalid]="countryName.invalid && countryName.touched"
-        [ngModel]="user.country"
-        required
-        #countryName="ngModel">
-        <small
-        *ngIf="countryName.invalid && countryName.touched"
-        class="form-text text-danger"
-        >Country is required</small
-      >
-    <option *ngFor="let country of countries"
-            [value]="country.code">
-    {{country.name}}
+
+  <select
+    class="form-control"
+    name="country"
+    [disabled]="countries.length === 0"
+    [class.is-invalid]="countryName.invalid && countryName.touched"
+    [ngModel]="user.country"
+    required
+    #countryName="ngModel"
+  >
+    <option *ngFor="let country of countries" [value]="country.code">
+      {{ country.name }}
     </option>
   </select>
- 
+  <small
+  *ngIf="countryName.invalid && countryName.touched"
+  class="form-text text-danger"
+  >Please select the country name</small>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Gender</label>
+    <div class="col-8">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input"
+               type="radio"
+               name="gender"
+               [class.is-invalid]="gender.invalid && gender.touched"
+               value="M"
+               required
+               [ngModel]="user.gender"
+               #gender="ngModel" />
+
+        <label class="form-check-label">Masculine</label>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input"
+               type="radio" 
+               name="gender"
+               [class.is-invalid]="gender.invalid && gender.touched"
+               value="F"
+               required
+               [ngModel]="user.gender"
+               #gender="ngModel" />
+        <label class="form-check-label">Feminine</label>
+
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input"
+               type="radio" 
+               name="gender"
+               [class.is-invalid]="gender.invalid && gender.touched"
+               value="NE"
+               required
+               [ngModel]="user.gender"
+               #gender="ngModel" />
+        <label class="form-check-label">I prefer do not especificate</label>
+
+      </div>
+    </div>
+    <small
+    *ngIf="gender.invalid && gender.touched"
+    class="form-text text-danger"
+    >Gender selection is required</small>
+  </div>
+
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">

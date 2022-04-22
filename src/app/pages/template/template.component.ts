@@ -13,7 +13,8 @@ export class TemplateComponent implements OnInit {
     name:'',
     lastName:'',
     email:'',
-    country:''
+    country:'',
+    gender:''
   };
   
   countries: any[] = [];
@@ -28,7 +29,7 @@ export class TemplateComponent implements OnInit {
            this.countries.unshift({
                           name:'[Select the country]',
                           code: ''})
-           return console.log(this.countries);
+           return 
                       
          });
   }
