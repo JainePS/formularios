@@ -4,64 +4,85 @@
   <div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Name</label>
-      <div class="col-8">
+      <div class="col">
         <input
           class="form-control"
           type="text"
           placeholder="Name"
           formControlName="name"
-          [class.is-invalid]="invalidName"
-        />
+          [class.is-invalid]="invalidName">
 
         <small *ngIf="invalidName" class="form-text text-danger"
-          >Name is required</small
-        >
+          >Name is required</small>
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Last name</label>
-      <div class="col-8">
+      <div class="col">
         <input
           class="form-control"
           type="text"
           placeholder="lastName"
           formControlName="lastName"
-          [class.is-invalid]="invalidLastName"
-        />
+          [class.is-invalid]="invalidLastName"/>
 
         <small *ngIf="invalidLastName" class="form-text text-danger"
-          >Last name is required</small
-        >
+          >Last name is required</small>
       </div>
     </div>
-  </div>
+  
 
   <div class="form-group row">
     <label class="col-2 col-form-label">E-mail</label>
-    <div class="col-8">
+    <div class="col">
       <input
         class="form-control"
         type="email"
         placeholder="Email"
         formControlName="email"
-        [class.is-invalid]="invalidEmail"
-      />
+        [class.is-invalid]="invalidEmail"/>
 
       <small *ngIf="invalidEmail" class="form-text text-danger"
-        >Email is required</small
-      >
+        >Email is required</small>
     </div>
   </div>
+</div>
 
-  <div class="form-group row">
-    <label class="col-2 col-form-label">&nbsp;</label>
-    <div class="input-group col-md-8">
-      <button type="submit" class="btn btn-outline-primary btn-block">
-        Guardar
-      </button>
+  <div class="form-group row" formGroupName="adress">
+    <label class="col-2 col-form-label">Adress</label>
+    <div class="row-form col">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="State"
+        formControlName="state">
     </div>
+    <div class="row-form col">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="city"
+        formControlName="city">
+
+     
+      </div>
+      <small *ngIf="invalidName" class="form-text text-danger"
+      >Adress is required</small>
   </div>
+  
+
+
+
+    <div class="form-group row">
+      <label class="col col-form-label">&nbsp;</label>
+      <div class="input-group col-8">
+       <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+       </button>
+      </div>
+    </div>
+
 </form>
 
 <hr />

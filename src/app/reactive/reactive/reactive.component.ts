@@ -30,7 +30,11 @@ export class ReactiveComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)] ],
       lastName: ['', Validators.required],
-      email: ['',[ Validators.required, Validators.email]]
+      email: ['',[ Validators.required, Validators.email]],
+      adress: this.fb.group({
+              state:['',Validators.required],
+              city:['', Validators.required]
+            })
     });
   }
 
