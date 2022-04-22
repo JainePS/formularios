@@ -12,16 +12,24 @@ export class TemplateComponent implements OnInit {
   user = {
     name:'',
     lastName:'',
-    email:''
+    email:'',
+    country:''
   };
+  
+  countries: any[] = [];
 
   constructor(private countriesService: CountriesService) { }
 
   ngOnInit(): void {
     this.countriesService.getCountries().
          subscribe(countries => {
-           console.log(countries);
-           
+           this.countries = countries;
+
+           this.countries.unshift({
+                          name:'[Select the country]',
+                          code: ''})
+           return console.log(this.countries);
+                      
          });
   }
 
@@ -32,7 +40,9 @@ export class TemplateComponent implements OnInit {
       Object.values(form.controls).forEach( control =>{
         control.markAsTouched()
       });
-    }
+    };
+    console.log(form.controls);
+    
     return;
         
   }
