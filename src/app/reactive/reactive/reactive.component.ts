@@ -14,6 +14,18 @@ export class ReactiveComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  get invalidName(){
+    return this.form.get('name').invalid && this.form.get('name').touched
+  }
+
+  get invalidLastName(){
+    return this.form.get('lastName').invalid && this.form.get('lastName').touched
+  }
+
+  get invalidEmail(){
+    return this.form.get('email').invalid && this.form.get('email').touched
+  }
+
   createForm() {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)] ],
@@ -24,5 +36,14 @@ export class ReactiveComponent implements OnInit {
 
   toHold(){
     console.log(this.form);
+
+    if(this.form.invalid){
+      Object.values(this.form.controls).forEach( (control: any) =>{
+        control.markAsTouched()
+      });
+    };
+    return console.log(this.form.controls);
+    
+    ;
   }
 }
