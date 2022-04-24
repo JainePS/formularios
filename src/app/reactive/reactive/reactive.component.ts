@@ -48,11 +48,7 @@ export class ReactiveComponent implements OnInit {
               state:['',Validators.required],
               city:['', Validators.required]
             }),
-      hobby:this.fb.array([
-        [],
-        [],
-        []
-      ])
+      hobby:this.fb.array([])
     });
   }
 
@@ -71,6 +67,13 @@ export class ReactiveComponent implements OnInit {
     this.form.reset();
   }
 
+  addHobby(){
+   this.hobby.push( this.fb.control('')); 
+  }
+  deleteHobby(i: number){
+    this.hobby.removeAt(i);
+
+  }
   toHold(){
     console.log(this.form);
 
@@ -93,6 +96,5 @@ export class ReactiveComponent implements OnInit {
     
     ;
   }
-
   
 }

@@ -96,7 +96,8 @@
               <input class="form-control" type="text" [formControlName]="i" />
             </td>
             <td>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger"
+                      (click)="deleteHobby(i)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -104,7 +105,8 @@
     </div>
 
     <button class="btn btn-primary btn-block"
-            type="button">Add</button>
+            type="button"
+            (click)="addHobby()">Add</button>
   </div>
 
   <div class="form-group row">
