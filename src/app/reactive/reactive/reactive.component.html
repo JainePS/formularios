@@ -10,10 +10,12 @@
           type="text"
           placeholder="Name"
           formControlName="name"
-          [class.is-invalid]="invalidName">
+          [class.is-invalid]="invalidName"
+        />
 
         <small *ngIf="invalidName" class="form-text text-danger"
-          >Name is required</small>
+          >Name is required</small
+        >
       </div>
     </div>
 
@@ -25,29 +27,32 @@
           type="text"
           placeholder="lastName"
           formControlName="lastName"
-          [class.is-invalid]="invalidLastName"/>
+          [class.is-invalid]="invalidLastName"
+        />
 
         <small *ngIf="invalidLastName" class="form-text text-danger"
-          >Last name is required</small>
+          >Last name is required</small
+        >
       </div>
     </div>
-  
 
-  <div class="form-group row">
-    <label class="col-2 col-form-label">E-mail</label>
-    <div class="col">
-      <input
-        class="form-control"
-        type="email"
-        placeholder="Email"
-        formControlName="email"
-        [class.is-invalid]="invalidEmail"/>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">E-mail</label>
+      <div class="col">
+        <input
+          class="form-control"
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [class.is-invalid]="invalidEmail"
+        />
 
-      <small *ngIf="invalidEmail" class="form-text text-danger"
-        >Email is required</small>
+        <small *ngIf="invalidEmail" class="form-text text-danger"
+          >Email is required</small
+        >
+      </div>
     </div>
   </div>
-</div>
 
   <div class="form-group row" formGroupName="adress">
     <label class="col-2 col-form-label">Adress</label>
@@ -57,7 +62,8 @@
         type="text"
         placeholder="State"
         formControlName="state"
-        [class.is-invalid]="invalidState">
+        [class.is-invalid]="invalidState"
+      />
     </div>
     <div class="row-form col">
       <input
@@ -65,26 +71,50 @@
         type="text"
         placeholder="city"
         formControlName="city"
-        [class.is-invalid]="invalidCity">
-
-     
-      </div>
-      <small *ngIf="invalidName" class="form-text text-danger"
-      >Adress is required</small>
+        [class.is-invalid]="invalidCity"
+      />
+    </div>
+    <small *ngIf="invalidName" class="form-text text-danger"
+      >Adress is required</small
+    >
   </div>
-  
 
-
-
-    <div class="form-group row">
-      <label class="col col-form-label">&nbsp;</label>
-      <div class="input-group col-8">
-       <button type="submit" class="btn btn-outline-primary btn-block">
-        Guardar
-       </button>
-      </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>ID</th>
+            <th>Hobby</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="hobby">
+          <tr *ngFor="let control of hobby.controls; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <input class="form-control" type="text" [formControlName]="i" />
+            </td>
+            <td>
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
+    <button class="btn btn-primary btn-block"
+            type="button">Add</button>
+  </div>
+
+  <div class="form-group row">
+    <label class="col col-form-label">&nbsp;</label>
+    <div class="input-group col-8">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
 </form>
 
 <hr />

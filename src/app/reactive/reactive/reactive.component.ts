@@ -10,9 +10,14 @@ export class ReactiveComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.createForm();
+    this.toChargeFormData();
   }
 
   ngOnInit(): void {}
+
+  get hobby(){
+    return this.form.get('hobby');
+  }
 
   get invalidName(){
     return this.form.get('name').invalid && this.form.get('name').touched
@@ -42,8 +47,28 @@ export class ReactiveComponent implements OnInit {
       adress: this.fb.group({
               state:['',Validators.required],
               city:['', Validators.required]
-            })
+            }),
+      hobby:this.fb.array([
+        [],
+        [],
+        []
+      ])
     });
+  }
+
+  toChargeFormData(){
+    // this.form.setValue({
+    this.form.reset({
+      name: '',
+      lastName: '',
+      email: '',
+      adress: {
+        state: '',
+        city:''
+      }
+    });
+
+    this.form.reset();
   }
 
   toHold(){
@@ -68,4 +93,6 @@ export class ReactiveComponent implements OnInit {
     
     ;
   }
+
+  
 }
