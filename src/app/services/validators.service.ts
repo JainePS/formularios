@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 
+interface ErroValidate {
+  [s:string]: boolean | null;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +12,26 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ValidatorsService {
 
   constructor() {}
+
+  userExists(control: FormControl): Promise<ErroValidate | null> | Observable<ErroValidate>{
+
+    if(!control.value){
+      return Promise.resolve(null);
+    }
+
+    return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+        if(control.value === 'stride'){
+          resolve ({exists: true})
+        } else{
+          resolve( null );
+        }
+      }, 2500)
+
+
+    });
+
+  }
 
   noSantos( control: FormControl ): any{
     if( control.value?.toLowerCase().trim() === 'santos'){

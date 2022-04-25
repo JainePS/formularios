@@ -29,6 +29,10 @@ export class ReactiveComponent implements OnInit {
     return this.form.get('lastName').invalid && this.form.get('lastName').touched
   }
 
+  get invalidUser(){
+    return this.form.get('user').invalid && this.form.get('user').touched
+  }
+
   get invalidEmail(){
     return this.form.get('email').invalid && this.form.get('email').touched
   }
@@ -57,6 +61,7 @@ export class ReactiveComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)] ],
       lastName: ['', [Validators.required, this.validators.noSantos ]],
       email: ['',[ Validators.required, Validators.email]],
+      user:['', , this.validators.userExists],
       pass1: ['', Validators.required],
       pass2: ['', Validators.required],
       adress: this.fb.group({
@@ -64,10 +69,9 @@ export class ReactiveComponent implements OnInit {
               city:['', Validators.required]
             }),
       hobby:this.fb.array([])
-    },{
+    ,
       validators: this.validators.equalPassords('pass1','pass2')
-    });
-    
+          })  
   }
 
   toChargeFormData(){
@@ -76,6 +80,7 @@ export class ReactiveComponent implements OnInit {
       name: '',
       lastName: '',
       email: '',
+      user:'',
       adress: {
         state: '',
         city:''
