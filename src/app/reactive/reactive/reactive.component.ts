@@ -41,17 +41,33 @@ export class ReactiveComponent implements OnInit {
     return this.form.get('adress.city').invalid && this.form.get('adress.city').touched
   }
 
+  get invalidPass1(){
+    return this.form.get('pass1').invalid && this.form.get('pass1').touched
+  }
+
+  get invalidPass2(){
+    const pass1 = this.form.get('pass1').value;
+    const pass2 = this.form.get('pass2').value;
+
+    return (pass1 === pass2) ? false: true;
+  }
+
   createForm() {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)] ],
       lastName: ['', [Validators.required, this.validators.noSantos ]],
       email: ['',[ Validators.required, Validators.email]],
+      pass1: ['', Validators.required],
+      pass2: ['', Validators.required],
       adress: this.fb.group({
               state:['',Validators.required],
               city:['', Validators.required]
             }),
       hobby:this.fb.array([])
+    },{
+      validators: this.validators.equalPassords('pass1','pass2')
     });
+    
   }
 
   toChargeFormData(){
